@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6976090914594332705}
   - component: {fileID: 6976090914594332718}
   - component: {fileID: 6976090914594332719}
-  - component: {fileID: 6976090914594332707}
+  - component: {fileID: 5118209238399698999}
   m_Layer: 0
   m_Name: TestComponent
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6976090914594332707
+--- !u!114 &5118209238399698999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,12 +107,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6976090914594332716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c27583d433b89e47bfacd950f7a3a81, type: 3}
+  m_Script: {fileID: 11500000, guid: 3820ba3213220b54bae2c943a1d9552b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fault: 0
   volts: 0
   faultTollerence: 5
-  defaultColour: {r: 1, g: 1, b: 1, a: 1}
+  defaultColour: {r: 0, g: 0, b: 1, a: 1}
   faultColour: {r: 1, g: 0, b: 0, a: 1}
   popUp: {fileID: 0}
+  onAngle: 45
+  offAngle: 10
+  switchOn: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Component : MonoBehaviour
+public abstract class Component : MonoBehaviour
 {
     public bool fault = false;
     public float volts = 0;
@@ -23,11 +23,7 @@ public class Component : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        volts = UnityEngine.Random.Range(0f, 10f);
-        if (volts > faultTollerence)
-        {
-            fault = true;
-        }
+        AssignValues();
     }
 
     // Update is called once per frame
@@ -41,6 +37,7 @@ public class Component : MonoBehaviour
                 if ((raycastHit.transform != null) && (raycastHit.collider.name == gameObject.name))
                 {
                     DisplayInfo(raycastHit.transform.gameObject);
+                    Interact();
                 }
             }
             else
@@ -67,4 +64,15 @@ public class Component : MonoBehaviour
         }
         voltText.text = Convert.ToString(volts);
     }
+
+    public void AssignValues()
+    {
+        volts = UnityEngine.Random.Range(0f, 10f);
+        if (volts > faultTollerence)
+        {
+            fault = true;
+        }
+    }
+
+    public abstract void Interact();
 }
