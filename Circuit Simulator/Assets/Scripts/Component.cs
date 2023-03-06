@@ -12,9 +12,14 @@ public class Component : MonoBehaviour
     public Color defaultColour = Color.blue;
     public Color faultColour = Color.red;
 
-    public GameObject popUpPrefab;
-    public GameObject popUpContainer;
+    public GameObject popUp;
 
+    private Text voltText;
+    private Text faultValue;
+
+    Ray ray;
+    RaycastHit raycastHit;     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,35 +33,36 @@ public class Component : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Destroy(popUpContainer);
-
-            RaycastHit raycastHit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out raycastHit, 100f))
             {
-                if (raycastHit.transform != null)
+                if ((raycastHit.transform != null) && (raycastHit.collider.name == gameObject.name))
                 {
                     DisplayInfo(raycastHit.transform.gameObject);
                 }
+            }
+            else
+            {
+                popUp.SetActive(false);
             }
         }
     }
 
     private void DisplayInfo(GameObject gameObject)
     {
-        popUpContainer = Instantiate(popUpPrefab, GameObject.Find("Canvas").transform);
-        Text voltText = GameObject.Find("VoltsValue").GetComponent<Text>();
-        Text faultValue = GameObject.Find("FaultValue").GetComponent<Text>();
+        popUp.SetActive(true);
+        voltText = GameObject.Find("VoltsValue").GetComponent<Text>();
+        faultValue = GameObject.Find("FaultValue").GetComponent<Text>();
         if (fault)
         {
-            popUpContainer.GetComponent<Image>().color = faultColour;
+            popUp.GetComponent<Image>().color = faultColour;
             faultValue.text = "Yes";
         }
         else
         {
-            popUpContainer.GetComponent<Image>().color = defaultColour;
+            popUp.GetComponent<Image>().color = defaultColour;
             faultValue.text = "No";
         }
         voltText.text = Convert.ToString(volts);
