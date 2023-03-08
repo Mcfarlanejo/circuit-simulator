@@ -6,6 +6,7 @@ public class LightSwitch : Component
 {
     public float onAngle;
     public float offAngle;
+    public GameObject switchObject;
     public bool switchOn = false;
     private Quaternion target;
 
@@ -13,7 +14,7 @@ public class LightSwitch : Component
     {
         AssignValues();
         target = Quaternion.Euler(-offAngle, 0, 0);
-        transform.rotation = target;
+        switchObject.transform.rotation = target;
     }
     public override void Interact()
     {
@@ -27,6 +28,6 @@ public class LightSwitch : Component
             target = Quaternion.Euler(-offAngle, 0, 0);
             switchOn = !switchOn;
         }
-        transform.rotation = target;
+        switchObject.transform.rotation = target;
     }
 }
