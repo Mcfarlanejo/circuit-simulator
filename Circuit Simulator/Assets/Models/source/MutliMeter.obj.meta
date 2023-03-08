@@ -3,7 +3,37 @@ guid: c86f80c7d32b8f745a263980ef750199
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: g_MultiMeter_LP_pCube6_MultiMeter_LP_pCube6Mat
+    second: {fileID: 2100000, guid: 4fc6640ee7312e444817f3361c7f60b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: g_MultiMeter_LP_pCube7_MultiMeter_LP_pCube7Mat
+    second: {fileID: 2100000, guid: 4fc6640ee7312e444817f3361c7f60b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: g_MultiMeter_LP_pPlane1_MultiMeter_LP_pPlane1Mat
+    second: {fileID: 2100000, guid: 4fc6640ee7312e444817f3361c7f60b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: g_MultiMeter_LP_pPlane2_MultiMeter_LP_pPlane2Mat
+    second: {fileID: 2100000, guid: 4fc6640ee7312e444817f3361c7f60b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: g_MultiMeter_LP_polySurface2_MultiMeter_LP_polySurface2Mat
+    second: {fileID: 2100000, guid: 4fc6640ee7312e444817f3361c7f60b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: g_pCube2_MultiMeter_LP_pCube2_MultiMeter_LPMat
+    second: {fileID: 2100000, guid: 4fc6640ee7312e444817f3361c7f60b9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
