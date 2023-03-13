@@ -9,11 +9,13 @@ public class LightSwitch : Component
     public GameObject switchObject;
     public bool switchOn = false;
     private Quaternion target;
+    public GameObject connectedLight;
 
     private void Start()
     {
         AssignValues();
-        target = Quaternion.Euler(-offAngle, 0, 0);
+        CheckStartPosition();
+        
         switchObject.transform.rotation = target;
     }
     public override void Interact()
@@ -21,13 +23,25 @@ public class LightSwitch : Component
         if (!switchOn)
         {
             target = Quaternion.Euler(onAngle, 0, 0);
-            switchOn = !switchOn;
+            SwitchTriggered();
         }
         else
         {
             target = Quaternion.Euler(-offAngle, 0, 0);
-            switchOn = !switchOn;
+            SwitchTriggered();
         }
         switchObject.transform.rotation = target;
+    }
+
+    void CheckStartPosition()
+    {
+        switchOn = connectedLight.activeInHierarchy ? true : false;
+        target = connectedLight.activeInHierarchy ? Quaternion.Euler(onAngle, 0, 0) : Quaternion.Euler(-offAngle, 0, 0);
+    }
+
+    void SwitchTriggered()
+    {
+        connectedLight.SetActive(!connectedLight.activeInHierarchy);
+        switchOn = !switchOn;
     }
 }
