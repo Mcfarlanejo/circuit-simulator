@@ -146,8 +146,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fault: 0
+  inputVolts: 0
   volts: 0
-  faultTollerence: 5
+  amps: 0
+  outputVolts: 0
+  expectedVoltage: 230
+  expectedAmps: 10
   defaultColour: {r: 0, g: 0, b: 1, a: 1}
   faultColour: {r: 1, g: 0, b: 0, a: 1}
   popUp: {fileID: 0}
@@ -155,6 +159,7 @@ MonoBehaviour:
   offAngle: 180
   switchObject: {fileID: 2753719316889180175}
   switchOn: 0
+  connectedLight: {fileID: 0}
 --- !u!1 &4764827786305302386
 GameObject:
   m_ObjectHideFlags: 0

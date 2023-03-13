@@ -41,7 +41,11 @@ public class LightSwitch : Component
 
     void SwitchTriggered()
     {
-        connectedLight.SetActive(!connectedLight.activeInHierarchy);
+        if (!fault)
+        {
+            connectedLight.SetActive(!connectedLight.activeInHierarchy);
+        }
+        
         switchOn = !switchOn;
     }
 }
