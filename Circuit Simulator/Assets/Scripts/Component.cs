@@ -24,6 +24,8 @@ public abstract class Component : MonoBehaviour
 
     public GameObject popUp;
 
+    public List<AnchorPoint> anchorPoints;
+
     private Text voltText;
     private Text faultValue;
     private Text ampsText;
@@ -55,12 +57,21 @@ public abstract class Component : MonoBehaviour
                 if ((raycastHit.transform != null) && (raycastHit.collider.name == gameObject.name))
                 {
                     DisplayInfo(raycastHit.transform.gameObject);
+                    if (anchorPoints[0].parentComponentSelected == false)
+                    {
+                        ToggleAnchorPoints();
+                    }
+                    
                     Interact();
                 }
             }
             else
             {
                 popUp.SetActive(false);
+                if (anchorPoints[0].parentComponentSelected == true)
+                {
+                    ToggleAnchorPoints();
+                }
             }
         }
     }
@@ -83,6 +94,14 @@ public abstract class Component : MonoBehaviour
         }
         voltText.text = Convert.ToString(volts) + "V";
         ampsText.text = Convert.ToString(amps) + "A";
+    }
+
+    private void ToggleAnchorPoints()
+    {
+        foreach (AnchorPoint point in anchorPoints)
+        {
+            point.parentComponentSelected = !point.parentComponentSelected;
+        }
     }
 
     public void AssignValues()
