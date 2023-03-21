@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2480657189256567335}
   - component: {fileID: 2672441320024470070}
+  - component: {fileID: 2778027760374708279}
   m_Layer: 0
   m_Name: Cable
   m_TagString: Untagged
@@ -129,3 +130,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &2778027760374708279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364352330542808843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6acd98197b4114748b6d58d35962fd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volts: 0
+  amps: 0
+  anchorPoints: []

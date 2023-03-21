@@ -14,7 +14,9 @@ public class CableCreator : MonoBehaviour
     private bool drawing = false;
 
     private Vector3 startPos;
+    //private AnchorPoint startAnchor;
     private Vector3 endPos;
+    //private AnchorPoint endAnchor;
 
     Ray ray;
     RaycastHit raycastHit;
@@ -39,11 +41,13 @@ public class CableCreator : MonoBehaviour
                     if (!drawing)
                     {
                         startPos = raycastHit.transform.position;
+                        //startAnchor = raycastHit.transform.GetComponent<AnchorPoint>();
                         drawing = true;
                     }
                     else
                     {
                         endPos = raycastHit.transform.position;
+                        //endAnchor = raycastHit.transform.GetComponent<AnchorPoint>();
                         DrawCable();
                         drawing = false;
                     }
@@ -54,10 +58,11 @@ public class CableCreator : MonoBehaviour
 
     private void DrawCable()
     {
-        Vector3 midpoint = (startPos - endPos) / 2;
-        //Instantiate(cablePrefab, midpoint, Quaternion.identity);
         cableObjects.Add(Instantiate(cablePrefab));
-        line = cableObjects[cableObjects.Count-1].GetComponent<LineRenderer>();
+        GameObject lineObject = cableObjects[cableObjects.Count - 1];
+        //lineObject.GetComponent<Cable>().anchorPoints[0] = startAnchor;
+        //lineObject.GetComponent<Cable>().anchorPoints[1] = endAnchor;
+        line = lineObject.GetComponent<LineRenderer>();
 
         Vector3[] points = {
         startPos,
