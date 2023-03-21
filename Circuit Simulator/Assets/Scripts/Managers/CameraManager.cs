@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         frontPosition = cam.transform.position;
-        backPosition = new Vector3(frontPosition.x, frontPosition.y, -frontPosition.z);
+        backPosition = new Vector3(frontPosition.x, frontPosition.y, -frontPosition.z + 1);
     }
 
     // Update is called once per frame

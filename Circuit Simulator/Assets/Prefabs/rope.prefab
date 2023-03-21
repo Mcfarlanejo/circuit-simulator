@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1247011049395058571}
   - component: {fileID: 1247011049395058570}
   m_Layer: 0
-  m_Name: Anchor
+  m_Name: EndPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 1247011049238629812}
   - component: {fileID: 1247011049238629813}
   m_Layer: 0
-  m_Name: Bone
+  m_Name: StartPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

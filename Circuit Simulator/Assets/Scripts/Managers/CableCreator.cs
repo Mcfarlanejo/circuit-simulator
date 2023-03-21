@@ -7,14 +7,18 @@ using UnityEngine.Rendering;
 
 public class CableCreator : MonoBehaviour
 {
-    public GameObject cable;
-    public Camera cam;
-    private GameObject currentCable;
-    private Vector3[] currentCablePoints;
+    public GameObject cablePrefab;
+    public List<GameObject> cableObjects;
+
+    private LineRenderer line;
     private bool drawing = false;
 
     private Vector3 startPos;
     private Vector3 endPos;
+
+    Ray ray;
+    RaycastHit raycastHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,34 +28,44 @@ public class CableCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !drawing)
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            drawing = true;
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 objectPos = cam.ScreenToViewportPoint(mousePos);
-            startPos = objectPos;
-            currentCable = Instantiate(cable, objectPos, Quaternion.identity);
-            if (Input.GetMouseButtonUp(0))
+            if (Physics.Raycast(ray, out raycastHit, 100f))
             {
-                Vector3 mousePosEnd = Input.mousePosition;
-                Vector3 objectPosEnd = Camera.current.ScreenToViewportPoint(mousePos);
-                endPos = objectPosEnd;
-
-                LineRenderer currentCableLR = currentCable.gameObject.GetComponent<LineRenderer>();
-                currentCableLR.positionCount = Convert.ToInt32(CalculateCableLength());
-                currentCableLR.GetPositions(currentCablePoints);
-
-                Debug.Log(currentCableLR.positionCount);
+                if ((raycastHit.transform != null) && (raycastHit.transform.GetComponent<AnchorPoint>() != null))
+                {
+                    Debug.Log($"Hit {raycastHit.collider.name} at {raycastHit.transform.position}");
+                    if (!drawing)
+                    {
+                        startPos = raycastHit.transform.position;
+                        drawing = true;
+                    }
+                    else
+                    {
+                        endPos = raycastHit.transform.position;
+                        DrawCable();
+                        drawing = false;
+                    }
+                }
             }
-            drawing = false;
         }
     }
 
-    private float CalculateCableLength()
+    private void DrawCable()
     {
-        float cableLength;
-        cableLength = Vector3.Distance(startPos, endPos);
-        Debug.Log(cableLength);
-        return cableLength;
+        Vector3 midpoint = (startPos - endPos) / 2;
+        //Instantiate(cablePrefab, midpoint, Quaternion.identity);
+        cableObjects.Add(Instantiate(cablePrefab));
+        line = cableObjects[cableObjects.Count-1].GetComponent<LineRenderer>();
+
+        Vector3[] points = {
+        startPos,
+        endPos
+        };
+        line.positionCount = points.Length;
+        line.SetPositions(points);
+
+        line.sharedMaterial.color = Color.red;
     }
 }
