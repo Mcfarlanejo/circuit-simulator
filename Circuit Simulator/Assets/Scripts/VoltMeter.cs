@@ -10,7 +10,7 @@ public class VoltMeter : MonoBehaviour
     private void OnMouseDown()
     {
 
-        settingSwitch.transform.Rotate(Vector3.up, 20f); // rotate 1 degree around the y-axis
+        settingSwitch.transform.Rotate(Vector3.up, 15f); // rotate 1 degree around the y-axis
     }
 
     
