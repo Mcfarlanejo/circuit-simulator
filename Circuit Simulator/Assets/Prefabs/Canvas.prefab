@@ -31,7 +31,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7833751650218657749}
+  - {fileID: 4157086945380855735}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1001 &6127115491253355563
+--- !u!1001 &1472998473
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -196,14 +196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopUp
       objectReference: {fileID: 0}
-    - target: {fileID: 9104472214716038523, guid: 59a681af6dba16d48805c197f3d0059d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59a681af6dba16d48805c197f3d0059d, type: 3}
---- !u!224 &7833751650218657749 stripped
+--- !u!224 &4157086945380855735 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4157086946056389630, guid: 59a681af6dba16d48805c197f3d0059d, type: 3}
-  m_PrefabInstance: {fileID: 6127115491253355563}
+  m_PrefabInstance: {fileID: 1472998473}
   m_PrefabAsset: {fileID: 0}
