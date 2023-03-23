@@ -10,11 +10,11 @@ public class CableCreator : MonoBehaviour
     public GameObject cablePrefab;
     public List<GameObject> cableObjects;
     
-    private Color defaultCableColour = Color.yellow;
-    private Color positiveCableColour = Color.red;
-    private Color negativeCableColour = Color.black;
+    public Material defaultCableColour;
+    public Material positiveCableColour;
+    public Material negativeCableColour;
     
-    public Color cableColour;
+    private Material cableColour;
 
     private LineRenderer line;
     private bool drawing = false;
@@ -53,6 +53,8 @@ public class CableCreator : MonoBehaviour
                         cableColour = negativeCableColour;
                     }
 
+                    Debug.Log(raycastHit.collider.name);
+
                     if (!drawing)
                     {
                         startPos = raycastHit.transform.position;
@@ -86,7 +88,7 @@ public class CableCreator : MonoBehaviour
 
         line.positionCount = points.Length;
         line.SetPositions(points);
-        line.sharedMaterial.color = cableColour;
+        line.sharedMaterial = cableColour;
 
         cableColour = defaultCableColour;
     }
