@@ -966,6 +966,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1187155343, guid: 8ee8089a9b671bf4493657ac3a96cceb, type: 3}
+      propertyPath: defaultCableColour
+      value: 
+      objectReference: {fileID: 2100000, guid: fff80642f9e12184bbe74e350461cc9d, type: 2}
+    - target: {fileID: 1187155343, guid: 8ee8089a9b671bf4493657ac3a96cceb, type: 3}
+      propertyPath: negativeCableColour
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ac3da4aba1312b40aa6bc7cd796d7ee, type: 2}
+    - target: {fileID: 1187155343, guid: 8ee8089a9b671bf4493657ac3a96cceb, type: 3}
+      propertyPath: positiveCableColour
+      value: 
+      objectReference: {fileID: 2100000, guid: 83bafbf61d91ff047b608be9b3e27299, type: 2}
     - target: {fileID: 1253075232, guid: 8ee8089a9b671bf4493657ac3a96cceb, type: 3}
       propertyPath: cam
       value: 
