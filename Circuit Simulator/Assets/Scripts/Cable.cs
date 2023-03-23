@@ -7,9 +7,14 @@ public class Cable : MonoBehaviour
     public float volts;
     public float amps;
 
-    public AnchorPoint[] anchorPoints = new AnchorPoint[2];
+    public AnchorPoint[] anchorPoints;
 
     private LineRenderer lineRenderer;
+
+    private void Awake()
+    {
+        anchorPoints = new AnchorPoint[2];
+    }
 
     private void Start()
     {
