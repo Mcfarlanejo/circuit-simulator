@@ -1,0 +1,11 @@
+Model Information:
+* title:	Siemens MCB Circuit Breaker
+* source:	https://sketchfab.com/3d-models/siemens-mcb-circuit-breaker-34b6113902584ce090c35456fdb978cf
+* author:	GeniusPilot2016 (https://sketchfab.com/GeniusPilot2016)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Siemens MCB Circuit Breaker" (https://sketchfab.com/3d-models/siemens-mcb-circuit-breaker-34b6113902584ce090c35456fdb978cf) by GeniusPilot2016 (https://sketchfab.com/GeniusPilot2016) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

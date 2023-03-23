@@ -49,6 +49,10 @@ public abstract class Component : MonoBehaviour
         {
             fault = true;
         }
+        if ((volts == expectedVoltage) && (amps == expectedAmps))
+        {
+            fault = false;
+        }
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -56,22 +60,21 @@ public abstract class Component : MonoBehaviour
             {
                 if ((raycastHit.transform != null) && (raycastHit.collider.name == gameObject.name))
                 {
-                    DisplayInfo(raycastHit.transform.gameObject);
-                    if (anchorPoints[0].parentComponentSelected == false)
-                    {
-                        ToggleAnchorPoints();
-                    }
-                    
                     Interact();
+                    DisplayInfo(raycastHit.transform.gameObject);
+                    //if (anchorPoints[0].parentComponentSelected == false)
+                    //{
+                    //    ToggleAnchorPoints();
+                    //}
                 }
             }
             else
             {
                 popUp.SetActive(false);
-                if (anchorPoints[0].parentComponentSelected == true)
-                {
-                    ToggleAnchorPoints();
-                }
+                //if (anchorPoints[0].parentComponentSelected == true)
+                //{
+                //    //ToggleAnchorPoints();
+                //}
             }
         }
     }
