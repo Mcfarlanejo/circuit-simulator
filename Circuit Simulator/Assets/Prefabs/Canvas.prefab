@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopUp
       objectReference: {fileID: 0}
+    - target: {fileID: 9104472214716038523, guid: 59a681af6dba16d48805c197f3d0059d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59a681af6dba16d48805c197f3d0059d, type: 3}
 --- !u!224 &4157086945380855735 stripped

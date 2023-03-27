@@ -77,6 +77,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cablePrefab: {fileID: 3364352330542808843, guid: e321c9bd7e23ee84a9024082887c47c0, type: 3}
   cableObjects: []
+  defaultCableColour: {fileID: 2100000, guid: fff80642f9e12184bbe74e350461cc9d, type: 2}
+  positiveCableColour: {fileID: 2100000, guid: 83bafbf61d91ff047b608be9b3e27299, type: 2}
+  negativeCableColour: {fileID: 2100000, guid: 3ac3da4aba1312b40aa6bc7cd796d7ee, type: 2}
 --- !u!1 &1253075230
 GameObject:
   m_ObjectHideFlags: 0

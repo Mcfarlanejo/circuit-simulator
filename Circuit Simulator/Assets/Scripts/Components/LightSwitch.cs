@@ -13,7 +13,6 @@ public class LightSwitch : Component
 
     private void Start()
     {
-        AssignValues();
         CheckStartPosition();
         
         switchObject.transform.rotation = target;
@@ -35,8 +34,9 @@ public class LightSwitch : Component
 
     void CheckStartPosition()
     {
-        switchOn = connectedLight.activeInHierarchy ? true : false;
+        switchOn = volts == expectedVoltage ? true : false;
         target = connectedLight.activeInHierarchy ? Quaternion.Euler(onAngle, 0, 0) : Quaternion.Euler(-offAngle, 0, 0);
+        connectedLight.SetActive(switchOn);
     }
 
     void SwitchTriggered()

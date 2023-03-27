@@ -20,4 +20,22 @@ public class Cable : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
     }
+
+    private void Update()
+    {
+        foreach (AnchorPoint anchorPoint in anchorPoints)
+        {
+            if (anchorPoint.volts != 0)
+            {
+                volts = Mathf.Max(anchorPoints[0].volts, anchorPoints[1].volts);
+                amps = Mathf.Max(anchorPoints[0].amps, anchorPoints[1].amps);
+            }
+            else
+            {
+                anchorPoint.volts = volts;
+                anchorPoint.amps = amps;
+            }
+        }
+       
+    }
 }

@@ -45,14 +45,7 @@ public abstract class Component : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((volts != expectedVoltage) || (amps != expectedAmps))
-        {
-            fault = true;
-        }
-        if ((volts == expectedVoltage) && (amps == expectedAmps))
-        {
-            fault = false;
-        }
+        CheckForFault();
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -61,6 +54,7 @@ public abstract class Component : MonoBehaviour
                 if ((raycastHit.transform != null) && (raycastHit.collider.name == gameObject.name))
                 {
                     Interact();
+                    CheckForFault();
                     DisplayInfo(raycastHit.transform.gameObject);
                     //if (anchorPoints[0].parentComponentSelected == false)
                     //{
@@ -76,6 +70,18 @@ public abstract class Component : MonoBehaviour
                 //    //ToggleAnchorPoints();
                 //}
             }
+        }
+    }
+
+    private void CheckForFault()
+    {
+        if ((volts != expectedVoltage) || (amps != expectedAmps))
+        {
+            fault = true;
+        }
+        if ((volts == expectedVoltage) && (amps == expectedAmps))
+        {
+            fault = false;
         }
     }
 

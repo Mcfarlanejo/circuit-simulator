@@ -41,7 +41,8 @@ public class CableCreator : MonoBehaviour
         {
             if (Physics.Raycast(ray, out raycastHit, 100f))
             {
-                if ((raycastHit.transform != null) && (raycastHit.transform.GetComponent<AnchorPoint>() != null))
+                if ((raycastHit.transform != null) && (raycastHit.transform.GetComponent<AnchorPoint>() != null) && 
+                    (raycastHit.transform.position != startPos))
                 {
                     Debug.Log($"Hit {raycastHit.collider.name} at {raycastHit.transform.position}");
                     if (raycastHit.collider.name == "+AnchorPoint")

@@ -27,12 +27,14 @@ public class CircuitBreaker : Component
         {
             target = onPosition;
             volts = STANDARDVOLTAGE;
+            amps = STANDARDAMPS;
             switchOn = true;
         }
         else
         {
             target = offPosition;
             volts = 0;
+            amps = 0;
             switchOn = false;
         }
         switchObject.transform.localPosition = target;
