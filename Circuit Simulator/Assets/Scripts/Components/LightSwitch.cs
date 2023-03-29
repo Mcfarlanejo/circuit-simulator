@@ -17,6 +17,18 @@ public class LightSwitch : Component
         
         switchObject.transform.rotation = target;
     }
+
+    private void FixedUpdate()
+    {
+        if (switchOn && !fault)
+        {
+            connectedLight.SetActive(true);
+        }
+        else
+        {
+            connectedLight.SetActive(false);
+        }
+    }
     public override void Interact()
     {
         if (!switchOn)
@@ -40,12 +52,7 @@ public class LightSwitch : Component
     }
 
     void SwitchTriggered()
-    {
-        if (!fault)
-        {
-            connectedLight.SetActive(!connectedLight.activeInHierarchy);
-        }
-        
+    {   
         switchOn = !switchOn;
     }
 }

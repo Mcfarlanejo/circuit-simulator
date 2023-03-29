@@ -10,13 +10,23 @@ public class AnchorPoint : MonoBehaviour
     public Color highlightedColour;
     public GameObject attachedComponent;
     public bool parentComponentSelected = false;
+    public Cable attachedCable;
+    public bool powerSource = false;
 
     public float volts;
     public float amps;
+
+    private void Start()
+    {
+        if (attachedComponent.GetComponent<Component>().powerSource)
+        {
+            powerSource = true;
+        }
+    }
     // Start is called before the first frame update
     void Update()
     {
-        if (attachedComponent.GetComponent<Component>().volts != 0)
+        if (powerSource)
         {
             volts = attachedComponent.GetComponent<Component>().volts;
             amps = attachedComponent.GetComponent<Component>().amps;
@@ -27,7 +37,6 @@ public class AnchorPoint : MonoBehaviour
             attachedComponent.GetComponent<Component>().amps = amps;
         }
         
-
         if (parentComponentSelected)
         {
             Highlight();

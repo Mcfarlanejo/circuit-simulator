@@ -22,6 +22,8 @@ public abstract class Component : MonoBehaviour
     public Color defaultColour = Color.blue;
     public Color faultColour = Color.red;
 
+    public bool powerSource = false;
+
     public GameObject popUp;
 
     public List<AnchorPoint> anchorPoints;

@@ -19,16 +19,21 @@ public class Cable : MonoBehaviour
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+
+        foreach (AnchorPoint anchorPoint in anchorPoints)
+        {
+            anchorPoint.attachedCable = gameObject.GetComponent<Cable>();
+        }
     }
 
     private void Update()
     {
         foreach (AnchorPoint anchorPoint in anchorPoints)
         {
-            if (anchorPoint.volts != 0)
+            if (anchorPoint.powerSource)
             {
-                volts = Mathf.Max(anchorPoints[0].volts, anchorPoints[1].volts);
-                amps = Mathf.Max(anchorPoints[0].amps, anchorPoints[1].amps);
+                volts = anchorPoint.volts;
+                amps = anchorPoint.amps;
             }
             else
             {
@@ -36,6 +41,5 @@ public class Cable : MonoBehaviour
                 anchorPoint.amps = amps;
             }
         }
-       
     }
 }

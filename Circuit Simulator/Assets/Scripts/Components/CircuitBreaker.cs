@@ -13,12 +13,24 @@ public class CircuitBreaker : Component
     public bool switchOn = false;
     private Vector3 target;
 
+    private void Awake()
+    {
+        powerSource = true;
+    }
     // Start is called before the first frame update
     void Start()
     {
         AssignValues();
         CheckStartPosition();
         switchObject.transform.localPosition = target;
+    }
+    private void FixedUpdate()
+    {
+        foreach (AnchorPoint anchorPoint in anchorPoints)
+        {
+            anchorPoint.volts = volts;
+            anchorPoint.amps = amps;
+        }
     }
 
     public override void Interact()
