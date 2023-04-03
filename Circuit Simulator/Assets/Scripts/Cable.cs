@@ -28,17 +28,33 @@ public class Cable : MonoBehaviour
 
     private void Update()
     {
-        if (((anchorPoints[0].powerSource == true) && (anchorPoints[0].volts != 0)) ||
-            ((anchorPoints[1].powerSource == true) && (anchorPoints[1].volts != 0)))
+        
+
+        if ((anchorPoints[0].gameObject.name != "-AnchorPoint") && (anchorPoints[1].gameObject.name != "-AnchorPoint") &&
+            (anchorPoints[0].gameObject.name != "+AnchorPoint") && (anchorPoints[1].gameObject.name != "+AnchorPoint"))
         {
-            foreach (AnchorPoint anchorPoint in anchorPoints)
+            if (((anchorPoints[0].powerSource == true) && (anchorPoints[0].volts != 0)) ||
+                ((anchorPoints[1].powerSource == true) && (anchorPoints[1].volts != 0)))
             {
-                if (anchorPoint.powerSource || anchorPoint.transferPower)
+                foreach (AnchorPoint anchorPoint in anchorPoints)
                 {
-                    volts = anchorPoint.volts;
-                    amps = anchorPoint.amps;
+                    if (anchorPoint.powerSource || anchorPoint.transferPower)
+                    {
+                        volts = anchorPoint.volts;
+                        amps = anchorPoint.amps;
+                    }
+                    else
+                    {
+                        anchorPoint.volts = volts;
+                        anchorPoint.amps = amps;
+                    }
                 }
-                else
+            }
+            else
+            {
+                volts = 0;
+                amps = 0;
+                foreach (AnchorPoint anchorPoint in anchorPoints)
                 {
                     anchorPoint.volts = volts;
                     anchorPoint.amps = amps;
@@ -47,28 +63,13 @@ public class Cable : MonoBehaviour
         }
         else
         {
-            volts = 0;
-            amps = 0;
             foreach (AnchorPoint anchorPoint in anchorPoints)
             {
-                anchorPoint.volts = volts;
-                anchorPoint.amps = amps;
-            }
-        }
-       
-    }
-
-    private void FixedUpdate()
-    {
-        if ((anchorPoints[0] != null) && (anchorPoints[1] != null))
-        {
-            if ((anchorPoints[0].volts == 0) && (anchorPoints[1].volts == 0))
-            {
-                volts = 0;
-            }
-            if ((anchorPoints[0].amps == 0) && (anchorPoints[1].amps == 0))
-            {
-                amps = 0;
+                if ((anchorPoint.gameObject.name == "+AnchorPoint") || (anchorPoint.gameObject.name == "-AnchorPoint"))
+                {
+                    anchorPoint.volts = volts;
+                    anchorPoint.amps = amps;
+                }
             }
         }
     }

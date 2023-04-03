@@ -32,16 +32,20 @@ public class AnchorPoint : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        if (powerSource)
+        if (attachedComponent != null)
         {
-            volts = attachedComponent.GetComponent<Component>().volts;
-            amps = attachedComponent.GetComponent<Component>().amps;
+            if (powerSource)
+            {
+                volts = attachedComponent.GetComponent<Component>().volts;
+                amps = attachedComponent.GetComponent<Component>().amps;
+            }
+            else
+            {
+                attachedComponent.GetComponent<Component>().volts = volts;
+                attachedComponent.GetComponent<Component>().amps = amps;
+            }
         }
-        else
-        {
-            attachedComponent.GetComponent<Component>().volts = volts;
-            attachedComponent.GetComponent<Component>().amps = amps;
-        }
+        
 
         if (parentComponentSelected)
         {
