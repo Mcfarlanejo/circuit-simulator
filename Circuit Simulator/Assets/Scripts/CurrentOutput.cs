@@ -17,7 +17,7 @@ public class CurrentOutput : MonoBehaviour
     // Show voltage or current output of connected object
     void Update()
     {
-        if (negative.attachedCable != null && settings != null)
+        if (negative.attachedCables != null && settings != null)
         {
             float switchAngle = settings.transform.rotation.eulerAngles.y;
             if (switchAngle > 0f && switchAngle <= SWITCH_ANGLE_THRESHOLD)

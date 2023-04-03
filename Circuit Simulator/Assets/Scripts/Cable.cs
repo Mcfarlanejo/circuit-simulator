@@ -22,23 +22,53 @@ public class Cable : MonoBehaviour
 
         foreach (AnchorPoint anchorPoint in anchorPoints)
         {
-            anchorPoint.attachedCable = gameObject.GetComponent<Cable>();
+            anchorPoint.attachedCables.Add(gameObject.GetComponent<Cable>());
         }
     }
 
     private void Update()
     {
-        foreach (AnchorPoint anchorPoint in anchorPoints)
+        if (((anchorPoints[0].powerSource == true) && (anchorPoints[0].volts != 0)) ||
+            ((anchorPoints[1].powerSource == true) && (anchorPoints[1].volts != 0)))
         {
-            if (anchorPoint.powerSource || anchorPoint.transferPower)
+            foreach (AnchorPoint anchorPoint in anchorPoints)
             {
-                volts = anchorPoint.volts;
-                amps = anchorPoint.amps;
+                if (anchorPoint.powerSource || anchorPoint.transferPower)
+                {
+                    volts = anchorPoint.volts;
+                    amps = anchorPoint.amps;
+                }
+                else
+                {
+                    anchorPoint.volts = volts;
+                    anchorPoint.amps = amps;
+                }
             }
-            else
+        }
+        else
+        {
+            volts = 0;
+            amps = 0;
+            foreach (AnchorPoint anchorPoint in anchorPoints)
             {
                 anchorPoint.volts = volts;
                 anchorPoint.amps = amps;
+            }
+        }
+       
+    }
+
+    private void FixedUpdate()
+    {
+        if ((anchorPoints[0] != null) && (anchorPoints[1] != null))
+        {
+            if ((anchorPoints[0].volts == 0) && (anchorPoints[1].volts == 0))
+            {
+                volts = 0;
+            }
+            if ((anchorPoints[0].amps == 0) && (anchorPoints[1].amps == 0))
+            {
+                amps = 0;
             }
         }
     }
