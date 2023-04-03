@@ -10,7 +10,7 @@ public class AnchorPoint : MonoBehaviour
     public Color highlightedColour;
     public GameObject attachedComponent;
     public bool parentComponentSelected = false;
-    public Cable attachedCable;
+    public List<Cable> attachedCables;
     public bool powerSource = false;
     public bool transferPower = false;
 
@@ -18,6 +18,10 @@ public class AnchorPoint : MonoBehaviour
     public float volts;
     public float amps;
 
+    private void Awake()
+    {
+        attachedCables = new List<Cable>();
+    }
     private void Start()
     {
         if (attachedComponent.GetComponent<Component>().powerSource)
@@ -39,15 +43,6 @@ public class AnchorPoint : MonoBehaviour
             attachedComponent.GetComponent<Component>().amps = amps;
         }
 
-        if ((volts > 0) && (amps > 0))
-        {
-            transferPower = true;
-        }
-        else
-        {
-            transferPower = false;
-        }
-        
         if (parentComponentSelected)
         {
             Highlight();
@@ -55,6 +50,18 @@ public class AnchorPoint : MonoBehaviour
         else
         {
             SetDefaultColour();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if ((volts > 0) && (amps > 0))
+        {
+            transferPower = true;
+        }
+        else
+        {
+            transferPower = false;
         }
     }
 

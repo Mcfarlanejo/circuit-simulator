@@ -81,7 +81,7 @@ public abstract class Component : MonoBehaviour
         {
             fault = true;
         }
-        if ((volts == expectedVoltage) && (amps == expectedAmps))
+        else if ((volts == expectedVoltage) && (amps == expectedAmps))
         {
             fault = false;
         }
