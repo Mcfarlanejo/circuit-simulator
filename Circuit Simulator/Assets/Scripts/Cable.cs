@@ -61,16 +61,5 @@ public class Cable : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            foreach (AnchorPoint anchorPoint in anchorPoints)
-            {
-                if ((anchorPoint.gameObject.name == "+AnchorPoint") || (anchorPoint.gameObject.name == "-AnchorPoint"))
-                {
-                    anchorPoint.volts = volts;
-                    anchorPoint.amps = amps;
-                }
-            }
-        }
     }
 }

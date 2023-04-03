@@ -35,7 +35,13 @@ public class CurrentOutput : MonoBehaviour
     {
         if (positive != null)
         {
-            text.text = positive.amps.ToString();
+            foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
+            {
+                if (anchorPoint.gameObject.name != "+AnchorPoint")
+                {
+                    text.text = anchorPoint.amps.ToString();
+                }
+            }
         }
     }
 
@@ -43,7 +49,13 @@ public class CurrentOutput : MonoBehaviour
     {
         if (positive != null)
         {
-            text.text = positive.volts.ToString();
+            foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
+            {
+                if (anchorPoint.gameObject.name != "+AnchorPoint")
+                {
+                    text.text = anchorPoint.volts.ToString();
+                }
+            }
         }
     }
 }
