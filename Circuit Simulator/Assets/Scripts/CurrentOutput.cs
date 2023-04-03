@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class CurrentOutput : MonoBehaviour
 {
     public AnchorPoint positive;
-    public AnchorPoint negative;
+    public AnchorPoint negative;     
+
     public Text text;
 
     public GameObject settings;
