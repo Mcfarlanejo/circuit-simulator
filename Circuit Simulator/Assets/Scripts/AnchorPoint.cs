@@ -12,6 +12,8 @@ public class AnchorPoint : MonoBehaviour
     public bool parentComponentSelected = false;
     public Cable attachedCable;
     public bool powerSource = false;
+    public bool transferPower = false;
+
 
     public float volts;
     public float amps;
@@ -35,6 +37,15 @@ public class AnchorPoint : MonoBehaviour
         {
             attachedComponent.GetComponent<Component>().volts = volts;
             attachedComponent.GetComponent<Component>().amps = amps;
+        }
+
+        if ((volts > 0) && (amps > 0))
+        {
+            transferPower = true;
+        }
+        else
+        {
+            transferPower = false;
         }
         
         if (parentComponentSelected)

@@ -30,7 +30,7 @@ public class Cable : MonoBehaviour
     {
         foreach (AnchorPoint anchorPoint in anchorPoints)
         {
-            if (anchorPoint.powerSource)
+            if (anchorPoint.powerSource || anchorPoint.transferPower)
             {
                 volts = anchorPoint.volts;
                 amps = anchorPoint.amps;
