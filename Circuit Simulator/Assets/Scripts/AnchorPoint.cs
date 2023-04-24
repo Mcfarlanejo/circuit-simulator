@@ -39,7 +39,7 @@ public class AnchorPoint : MonoBehaviour
                 volts = attachedComponent.GetComponent<Component>().volts;
                 amps = attachedComponent.GetComponent<Component>().amps;
             }
-            else
+            else if (CheckForPoweredAnchorPoints())
             {
                 attachedComponent.GetComponent<Component>().volts = volts;
                 attachedComponent.GetComponent<Component>().amps = amps;
@@ -77,5 +77,17 @@ public class AnchorPoint : MonoBehaviour
     private void SetDefaultColour()
     {
         gameObject.GetComponent<MeshRenderer>().material.color = defaultColour;
+    }
+
+    private bool CheckForPoweredAnchorPoints()
+    {
+        foreach (AnchorPoint anchorPoint in attachedComponent.GetComponent<Component>().anchorPoints)
+        {
+            if (anchorPoint.volts <= 0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
