@@ -58,20 +58,35 @@ public class CableCreator : MonoBehaviour
 
                     if (!drawing)
                     {
-                        startPos = raycastHit.transform.position;
-                        startAnchor = raycastHit.transform.GetComponent<AnchorPoint>();
-                        drawing = true;
+                        SetStartAnchor(raycastHit);
                     }
-                    else
+                    else if (startAnchor.GetComponentInParent<Component>() == null)
                     {
-                        endPos = raycastHit.transform.position;
-                        endAnchor = raycastHit.transform.GetComponent<AnchorPoint>();
-                        DrawCable();
-                        drawing = false;
+                        SetEndAnchor(raycastHit);
+                    }
+                    else if (raycastHit.transform.GetComponentInParent<Component>().gameObject !=
+                            startAnchor.GetComponentInParent<Component>().gameObject)
+                    {
+                        SetEndAnchor(raycastHit);
                     }
                 }
             }
         }
+    }
+
+    private void SetStartAnchor(RaycastHit raycastHit)
+    {
+        startPos = raycastHit.transform.position;
+        startAnchor = raycastHit.transform.GetComponent<AnchorPoint>();
+        drawing = true;
+    }
+
+    private void SetEndAnchor(RaycastHit raycastHit)
+    {
+        endPos = raycastHit.transform.position;
+        endAnchor = raycastHit.transform.GetComponent<AnchorPoint>();
+        DrawCable();
+        drawing = false;
     }
 
     private void DrawCable()
@@ -92,5 +107,8 @@ public class CableCreator : MonoBehaviour
         line.sharedMaterial = cableColour;
 
         cableColour = defaultCableColour;
+
+        startAnchor = null;
+        endAnchor = null;
     }
 }
