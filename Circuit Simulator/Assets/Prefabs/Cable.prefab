@@ -145,3 +145,7 @@ MonoBehaviour:
   volts: 0
   amps: 0
   anchorPoints: []
+  pointCount: 5
+  ropeLength: 0.1
+  curveAmount: 0.5
+  variance: 0
