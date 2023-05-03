@@ -54,7 +54,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3661639628750336703, guid: 1da5b80390c73f944aae3e3a11a52148, type: 3}
+  - {fileID: 2100000, guid: 0072a56f84b99ce4185135b1e774c744, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,4 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8a9ca70738ba449a8065e696e5a6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numPointsToAdd: 3
+  numPointsToAdd: 5
+  droopAmount: 0.2
+  capsulePrefab: {fileID: 5766244636267115225, guid: 60de9a57b7accd840b3cff77fcb4bc84, type: 3}
