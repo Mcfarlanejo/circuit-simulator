@@ -115,3 +115,8 @@ MonoBehaviour:
   highlightedColour: {r: 0.12771118, g: 1, b: 0, a: 1}
   attachedComponent: {fileID: 0}
   parentComponentSelected: 0
+  attachedCables: []
+  powerSource: 0
+  transferPower: 0
+  volts: 0
+  amps: 0

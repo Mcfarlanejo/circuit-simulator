@@ -33,7 +33,7 @@ public class CurrentOutput : MonoBehaviour
 
     public void ShowAmps()
     {
-        if (positive.attachedCables != null)
+        if (positive.attachedCables.Count < 0)
         {
             foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
             {
