@@ -12,21 +12,23 @@ public class CurrentOutput : MonoBehaviour
 
     public GameObject settings;
 
-    private const float SWITCH_ANGLE_THRESHOLD = 90f;
+    private const float SWITCH_ANGLE_THRESHOLD = 180f;
 
     // Show voltage or current output of connected object
     void Update()
     {
         if (negative.attachedCables != null && settings != null)
         {
-            float switchAngle = settings.transform.rotation.eulerAngles.y;
+            float switchAngle = settings.transform.localRotation.eulerAngles.y;
             if (switchAngle > 0f && switchAngle <= SWITCH_ANGLE_THRESHOLD)
             {
+            Debug.Log("V");
                 ShowVolts();
             }
             else
             {
                 ShowAmps();
+                Debug.Log("A");
             }
         }
     }
