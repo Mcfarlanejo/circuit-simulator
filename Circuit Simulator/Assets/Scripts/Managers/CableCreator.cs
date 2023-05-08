@@ -72,6 +72,13 @@ public class CableCreator : MonoBehaviour
                 }
             }
         }
+        if ((Input.GetMouseButtonDown(2)) && ((Physics.Raycast(ray, out raycastHit, 100f))))
+        {
+            if ((raycastHit.transform != null) && (raycastHit.transform.GetComponent<Cable>() != null))
+            {
+                DeleteCable(raycastHit.transform.gameObject);
+            }
+        }
     }
 
     private void SetStartAnchor(RaycastHit raycastHit)
@@ -110,5 +117,15 @@ public class CableCreator : MonoBehaviour
 
         startAnchor = null;
         endAnchor = null;
+    }
+
+    private void DeleteCable(GameObject cable)
+    {
+        Debug.Log("Again?");
+        foreach (AnchorPoint anchorPoint in cable.GetComponent<Cable>().anchorPoints)
+        {
+            anchorPoint.attachedCables.Remove(GetComponent<Cable>());
+        }
+        Destroy(cable);
     }
 }
