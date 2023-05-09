@@ -1,4 +1,4 @@
-using UnityEngine.UI;
+/* using UnityEngine.UI;
 using UnityEngine;
 using System.Net;
 
@@ -23,3 +23,4 @@ public class SliderValueText : MonoBehaviour
 
    }
 }
+ */

@@ -14,6 +14,8 @@ public class AnchorPoint : MonoBehaviour
     public bool powerSource = false;
     public bool transferPower = false;
 
+    public Color m_MouseOverColor = Color.red;
+    public MeshRenderer m_Renderer;
 
     public float volts;
     public float amps;
@@ -28,6 +30,8 @@ public class AnchorPoint : MonoBehaviour
         {
             powerSource = true;
         }
+        SetDefaultColour();
+        m_Renderer = GetComponent<MeshRenderer>();
     }
     // Start is called before the first frame update
     void Update()
@@ -45,7 +49,6 @@ public class AnchorPoint : MonoBehaviour
                 attachedComponent.GetComponent<Component>().amps = amps;
             }
         }
-        
 
         if (parentComponentSelected)
         {
@@ -53,8 +56,20 @@ public class AnchorPoint : MonoBehaviour
         }
         else
         {
-            SetDefaultColour();
+            //SetDefaultColour();
         }
+    }
+
+    void OnMouseEnter()
+    {
+        m_Renderer.material.color = m_MouseOverColor;
+        Debug.Log("Mouse Over");
+    }
+
+    void OnMouseExit()
+    {
+        m_Renderer.material.color = defaultColour;
+        Debug.Log("Mouse Off");
     }
 
     private void FixedUpdate()
