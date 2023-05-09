@@ -15,6 +15,7 @@ public class AnchorPoint : MonoBehaviour
     public bool transferPower = false;
 
     public Color m_MouseOverColor = Color.red;
+    public Color m_drawColour = Color.green;
     public MeshRenderer m_Renderer;
 
     public float volts;
@@ -62,14 +63,18 @@ public class AnchorPoint : MonoBehaviour
 
     void OnMouseEnter()
     {
-        m_Renderer.material.color = m_MouseOverColor;
-        Debug.Log("Mouse Over");
+        if (m_Renderer.material.color != m_drawColour)
+        {
+            m_Renderer.material.color = m_MouseOverColor;
+        }
     }
 
     void OnMouseExit()
     {
-        m_Renderer.material.color = defaultColour;
-        Debug.Log("Mouse Off");
+        if (m_Renderer.material.color != m_drawColour)
+        {
+            m_Renderer.material.color = defaultColour;
+        }
     }
 
     private void FixedUpdate()
