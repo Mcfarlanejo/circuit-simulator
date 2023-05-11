@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CurrentOutput : MonoBehaviour
 {
     public AnchorPoint positive;
-    public AnchorPoint negative;     
+    public AnchorPoint negative;
 
     public Text text;
 
@@ -20,22 +20,21 @@ public class CurrentOutput : MonoBehaviour
         if (negative.attachedCables != null && settings != null)
         {
             float switchAngle = settings.transform.localRotation.eulerAngles.y;
-            if (switchAngle > 0f && switchAngle <= SWITCH_ANGLE_THRESHOLD)
+
+            if (switchAngle > 0f && switchAngle < SWITCH_ANGLE_THRESHOLD)
             {
-            Debug.Log("V");
                 ShowVolts();
             }
             else
             {
                 ShowAmps();
-                Debug.Log("A");
             }
         }
     }
 
     public void ShowAmps()
     {
-        if (positive.attachedCables.Count < 0)
+        if (positive.attachedCables != null && positive.attachedCables.Count > 0)
         {
             foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
             {
@@ -49,7 +48,7 @@ public class CurrentOutput : MonoBehaviour
 
     public void ShowVolts()
     {
-        if (positive != null)
+        if (positive.attachedCables != null && positive.attachedCables.Count > 0)
         {
             foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
             {
@@ -61,4 +60,3 @@ public class CurrentOutput : MonoBehaviour
         }
     }
 }
-
