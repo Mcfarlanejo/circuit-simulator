@@ -14,6 +14,7 @@ public class AnchorPoint : MonoBehaviour
     public bool powerSource = false;
     public bool transferPower = false;
 
+    //Mouseover colour change vars
     public Color m_MouseOverColor = Color.red;
     public Color m_drawColour = Color.green;
     public MeshRenderer m_Renderer;
@@ -32,7 +33,7 @@ public class AnchorPoint : MonoBehaviour
             powerSource = true;
         }
         SetDefaultColour();
-        m_Renderer = GetComponent<MeshRenderer>();
+        m_Renderer = GetComponent<MeshRenderer>(); //Get our renderer for this anchor point
     }
     // Start is called before the first frame update
     void Update()
@@ -51,17 +52,17 @@ public class AnchorPoint : MonoBehaviour
             }
         }
 
-        if (parentComponentSelected)
-        {
-            Highlight();
-        }
-        else
-        {
-            //SetDefaultColour();
-        }
+        // if (parentComponentSelected)
+        // {
+        //     Highlight();
+        // }
+        // else
+        // {
+        //     //SetDefaultColour();
+        // }
     }
 
-    void OnMouseEnter()
+    void OnMouseEnter() //Change colour to red on mouse over, unless we are Green (Green indicates the anchor node is highlighted for cable drawing)
     {
         if (m_Renderer.material.color != m_drawColour)
         {
@@ -69,7 +70,7 @@ public class AnchorPoint : MonoBehaviour
         }
     }
 
-    void OnMouseExit()
+    void OnMouseExit() //Change back to blue when mouse leaves, as long as we are not Green
     {
         if (m_Renderer.material.color != m_drawColour)
         {
