@@ -11,11 +11,19 @@ public class LightSwitch : Component
     private Quaternion target;
     public GameObject connectedLight;
 
+    public GameObject lightBulb; 
+    public Material onMaterial;
+    public Material offMaterial;
+
+    private Renderer lightBulbRenderer;
+
     private void Start()
     {
+        lightBulbRenderer = lightBulb.GetComponent<Renderer>();
         CheckStartPosition();
         
         switchObject.transform.rotation = target;
+        UpdateMaterial();
     }
 
     private void FixedUpdate()
@@ -42,6 +50,7 @@ public class LightSwitch : Component
             SwitchTriggered();
         }
         switchObject.transform.rotation = target;
+         UpdateMaterial();
     }
 
     void CheckStartPosition()
@@ -54,5 +63,17 @@ public class LightSwitch : Component
     void SwitchTriggered()
     {   
         switchOn = !switchOn;
+    }
+
+    void UpdateMaterial()
+    {
+        if (switchOn)
+        {
+            lightBulbRenderer.material = onMaterial;
+        }
+        else
+        {
+            lightBulbRenderer.material = offMaterial;
+        }
     }
 }
