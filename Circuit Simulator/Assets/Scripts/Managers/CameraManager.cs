@@ -15,6 +15,8 @@ public class CameraManager : MonoBehaviour
         set { sensitivity = value; }
     }
     [Range(0.1f, 9f)][SerializeField] float sensitivity = 2f;
+    [Tooltip("Limits horizontal camera rotation. Prevents the camera from turning too far.")]
+    [Range(0f, 90f)][SerializeField] float xRotationLimit = 88f;
     [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
     [Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
 
@@ -59,9 +61,10 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        if (front)
+        if ((front) && ((Input.GetAxis(xAxis) > screenWidth - boundary) || (Input.GetAxis(xAxis) < 0 + boundary) || (Input.GetAxis(yAxis) > screenHeight - boundary) || (Input.GetAxis(yAxis) < 0 + boundary)))
         {
             rotation.x += Input.GetAxis(xAxis) * sensitivity;
+            rotation.x = Mathf.Clamp(rotation.x, -xRotationLimit, xRotationLimit);
             rotation.y += Input.GetAxis(yAxis) * sensitivity;
             rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
             var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
