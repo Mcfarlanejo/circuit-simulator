@@ -36,6 +36,7 @@ public class LightSwitch : Component
         {
             connectedLight.SetActive(false);
         }
+        UpdateMaterial();
     }
     public override void Interact()
     {
@@ -50,7 +51,7 @@ public class LightSwitch : Component
             SwitchTriggered();
         }
         switchObject.transform.rotation = target;
-         UpdateMaterial();
+         
     }
 
     void CheckStartPosition()
@@ -65,9 +66,9 @@ public class LightSwitch : Component
         switchOn = !switchOn;
     }
 
-    void UpdateMaterial()
+    void UpdateMaterial()   
     {
-        if (switchOn)
+        if (switchOn && !fault)
         {
             lightBulbRenderer.material = onMaterial;
         }
