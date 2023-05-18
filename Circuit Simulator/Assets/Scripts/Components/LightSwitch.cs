@@ -11,11 +11,15 @@ public class LightSwitch : Component
     private Quaternion target;
     public GameObject connectedLight;
 
-    private void Start()
+    new private void Start()
     {
+        base.Start();
+        
         CheckStartPosition();
         
         switchObject.transform.rotation = target;
+
+        componentName = "Light Switch";
     }
 
     private void FixedUpdate()
