@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8771166627424403242, guid: d122bf80daa664a40a03d048f03dcca4, type: 3}
+  - {fileID: 2100000, guid: 3ac3da4aba1312b40aa6bc7cd796d7ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,3 +115,8 @@ MonoBehaviour:
   highlightedColour: {r: 0.12771118, g: 1, b: 0, a: 1}
   attachedComponent: {fileID: 0}
   parentComponentSelected: 0
+  attachedCables: []
+  powerSource: 0
+  transferPower: 0
+  volts: 0
+  amps: 0

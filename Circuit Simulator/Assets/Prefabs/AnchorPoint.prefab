@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9223173505007342945}
   - component: {fileID: 9223173505007342944}
   - component: {fileID: 9223173505007342951}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AnchorPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,3 +115,8 @@ MonoBehaviour:
   highlightedColour: {r: 0.12771118, g: 1, b: 0, a: 1}
   attachedComponent: {fileID: 0}
   parentComponentSelected: 0
+  attachedCables: []
+  powerSource: 0
+  transferPower: 0
+  volts: 0
+  amps: 0

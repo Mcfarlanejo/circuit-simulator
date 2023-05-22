@@ -6,7 +6,6 @@ public class SliderValueText : MonoBehaviour
 {
    //public Slider slider;
    //public Text textComp;
-
    //void Start()
    //{
    //     UpdateText(slider.value);
@@ -20,6 +19,5 @@ public class SliderValueText : MonoBehaviour
    //void UpdateText(float val)
    // {
    //     textComp.text = slider.value.ToString();
-
    //}
 }
