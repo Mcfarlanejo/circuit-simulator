@@ -10,15 +10,23 @@ public class LightSwitch : Component
     public bool switchOn = false;
     private Quaternion target;
     public GameObject connectedLight;
-
+    
     public GameObject lightBulb; 
     public Material onMaterial;
     public Material offMaterial;
 
     private Renderer lightBulbRenderer;
 
-    private void Start()
+    new private void Start()
     {
+        base.Start();
+        
+        CheckStartPosition();
+        
+        switchObject.transform.rotation = target;
+
+        componentName = "Light Switch";
+        
         lightBulbRenderer = lightBulb.GetComponent<Renderer>();
         CheckStartPosition();
         

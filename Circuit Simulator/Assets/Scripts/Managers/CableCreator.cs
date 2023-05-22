@@ -24,6 +24,7 @@ public class CableCreator : MonoBehaviour
     private AnchorPoint startAnchor;
     private Vector3 endPos;
     private AnchorPoint endAnchor;
+    private Color drawColour = Color.green; //Colour for when drawing
 
     Ray ray;
     RaycastHit raycastHit;
@@ -90,6 +91,7 @@ public class CableCreator : MonoBehaviour
         startPos = raycastHit.transform.position;
         startAnchor = raycastHit.transform.GetComponent<AnchorPoint>();
         drawing = true;
+        startAnchor.GetComponent<MeshRenderer>().material.color = drawColour; //Change the material colour of the node to Green
     }
 
     private void SetEndAnchor(RaycastHit raycastHit)
@@ -135,7 +137,7 @@ public class CableCreator : MonoBehaviour
     private void ResetValues()
     {
         cableColour = defaultCableColour;
-
+        startAnchor.GetComponent<MeshRenderer>().material.color = startAnchor.defaultColour; //Set the node back to blue before nulling the references
         startAnchor = null;
         startPos = Vector3.zero;
         endAnchor = null;

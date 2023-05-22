@@ -32,16 +32,28 @@ public abstract class Component : MonoBehaviour
     private Text faultValue;
     private Text ampsText;
 
+    public string componentName = "DEFAULT_COMPONENT";
+    public GameObject tooltip;
+
     Ray ray;
     RaycastHit raycastHit;     
     
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         AssignValues();
+        
+        tooltip = GameObject.FindGameObjectsWithTag("Tooltip")[0];
+        StartCoroutine(LateStart());
 
         inputVolts = volts;
         outputVolts = volts;
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForSeconds(0.01f);
+        tooltip.SetActive(false);
     }
 
     // Update is called once per frame
@@ -73,6 +85,25 @@ public abstract class Component : MonoBehaviour
                 //}
             }
         }
+    }
+
+    void OnMouseEnter()
+    {
+        PopulateTooltip();
+        tooltip.SetActive(true);
+    }
+
+    void OnMouseExit()
+    {
+        tooltip.SetActive(false);
+    }
+
+    private void PopulateTooltip()
+    {
+        tooltip.GetComponent<Tooltip>().name = componentName;
+        tooltip.GetComponent<Tooltip>().volts = Convert.ToString(volts) + "V";
+        tooltip.GetComponent<Tooltip>().amps = Convert.ToString(amps) + "A";
+        tooltip.GetComponent<Tooltip>().fault = Convert.ToString(fault);
     }
 
     private void CheckForFault()

@@ -34,7 +34,7 @@ public class CurrentOutput : MonoBehaviour
 
     public void ShowAmps()
     {
-        if (positive.attachedCables.Count < 0)
+        if (positive.attachedCables.Count > 0)
         {
             foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
             {
@@ -48,7 +48,8 @@ public class CurrentOutput : MonoBehaviour
 
     public void ShowVolts()
     {
-        if (positive.attachedCables != null && positive.attachedCables.Count > 0)
+        if (positive.attachedCables.Count > 0)
+
         {
             foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
             {
