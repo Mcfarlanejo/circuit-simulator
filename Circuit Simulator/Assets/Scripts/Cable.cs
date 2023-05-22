@@ -9,6 +9,8 @@ public class Cable : MonoBehaviour
     public AnchorPoint[] anchorPoints;
 
     private LineRenderer lineRenderer;
+    private MeshCollider collider;
+    private Mesh mesh;
 
     private void Awake()
     {
@@ -18,11 +20,15 @@ public class Cable : MonoBehaviour
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        collider = gameObject.AddComponent<MeshCollider>();
 
         foreach (AnchorPoint anchorPoint in anchorPoints)
         {
             anchorPoint.attachedCables.Add(gameObject.GetComponent<Cable>());
         }
+        mesh = new Mesh();
+        lineRenderer.BakeMesh(mesh, true);
+        collider.sharedMesh = mesh;
     }
 
     private void Update()
