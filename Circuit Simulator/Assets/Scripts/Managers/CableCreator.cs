@@ -2,6 +2,7 @@ using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -67,6 +68,10 @@ public class CableCreator : MonoBehaviour
                     {
                         SetEndAnchor(raycastHit);
                     }
+                    else
+                    {
+                        ResetValues();
+                    }
                 }
             }
         }
@@ -90,8 +95,22 @@ public class CableCreator : MonoBehaviour
     {
         endPos = raycastHit.transform.position;
         endAnchor = raycastHit.transform.GetComponent<AnchorPoint>();
-        DrawCable();
-        drawing = false;
+        if (startAnchor.attachedCables.Count == 0)
+        {
+            DrawCable();
+        }
+        else
+        {
+            foreach (Cable cable in startAnchor.attachedCables)
+            {
+                if (!(cable.anchorPoints.Contains(startAnchor) && cable.anchorPoints.Contains(endAnchor)))
+                {
+                    DrawCable();
+                }
+            }
+        }
+        
+        ResetValues();
     }
 
     private void DrawCable()
@@ -110,21 +129,29 @@ public class CableCreator : MonoBehaviour
         line.positionCount = points.Length;
         line.SetPositions(points);
         line.sharedMaterial = cableColour;
+    }
 
+    private void ResetValues()
+    {
         cableColour = defaultCableColour;
 
         startAnchor = null;
         startPos = Vector3.zero;
         endAnchor = null;
         endPos = Vector3.zero;
+
+        drawing = false;
     }
 
     private void DeleteCable(GameObject cable)
     {
+        
         Debug.Log("Again?");
         foreach (AnchorPoint anchorPoint in cable.GetComponent<Cable>().anchorPoints)
         {
-            anchorPoint.attachedCables.Remove(GetComponent<Cable>());
+            Debug.Log(anchorPoint.attachedCables);
+            anchorPoint.attachedCables.Remove(cable.GetComponent<Cable>());
+            Debug.Log(anchorPoint.attachedCables);
         }
         Destroy(cable);
     }
