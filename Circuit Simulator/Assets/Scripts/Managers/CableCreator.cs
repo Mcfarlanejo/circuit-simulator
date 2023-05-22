@@ -54,8 +54,6 @@ public class CableCreator : MonoBehaviour
                         cableColour = negativeCableColour;
                     }
 
-                    Debug.Log(raycastHit.collider.name);
-
                     if (!drawing)
                     {
                         SetStartAnchor(raycastHit);
@@ -116,7 +114,9 @@ public class CableCreator : MonoBehaviour
         cableColour = defaultCableColour;
 
         startAnchor = null;
+        startPos = Vector3.zero;
         endAnchor = null;
+        endPos = Vector3.zero;
     }
 
     private void DeleteCable(GameObject cable)
