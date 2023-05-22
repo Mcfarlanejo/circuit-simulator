@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public Camera cam;
+    public Camera overlay;
     public bool front = true;
     private Vector3 frontPosition;
     private Vector3 backPosition;
@@ -23,12 +24,14 @@ public class CameraManager : MonoBehaviour
         {
             if (front)
             {
+                overlay.gameObject.SetActive(true);
                 cam.transform.position = backPosition;
                 cam.transform.rotation = Quaternion.Euler(0, 180, 0);
                 front = false;
             }
             else
             {
+                overlay.gameObject.SetActive(false);
                 cam.transform.position = frontPosition;
                 cam.transform.rotation = Quaternion.Euler(0, 0, 0);
                 front = true;

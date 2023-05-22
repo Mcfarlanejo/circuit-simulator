@@ -44,6 +44,11 @@ public class AnchorPoint : MonoBehaviour
                 attachedComponent.GetComponent<Component>().volts = volts;
                 attachedComponent.GetComponent<Component>().amps = amps;
             }
+            else
+            {
+                attachedComponent.GetComponent<Component>().volts = 0;
+                attachedComponent.GetComponent<Component>().amps = 0;
+            }
         }
         
 
