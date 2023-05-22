@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public Camera cam;
+    public Camera overlay;
     public bool front = true;
     private Vector3 frontPosition;
     private Vector3 backPosition;
@@ -43,14 +44,17 @@ public class CameraManager : MonoBehaviour
             curLerpTime = 0f; //Reset Lerp timer.
             if (front)
             {
+
                 lerpPos = backPosition;
                 lerpRot = Quaternion.Euler(0, 180, 0);
+                overlay.gameObject.SetActive(true);
                 front = false;
             }
             else
             {
                 lerpPos = frontPosition;
                 lerpRot = Quaternion.Euler(0, 0, 0);
+                overlay.gameObject.SetActive(false);
                 front = true;
             }
 

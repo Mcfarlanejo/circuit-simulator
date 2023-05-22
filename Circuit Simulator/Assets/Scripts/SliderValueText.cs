@@ -9,17 +9,17 @@ public class SliderValueText : MonoBehaviour
 
    void Start()
    {
-        UpdateText(slider.value);
-        slider.onValueChanged.AddListener(UpdateText);
+        //UpdateText(slider.value);
+        //slider.onValueChanged.AddListener(UpdateText);
    }
    void Update()
     {
-        UpdateText(slider.value);
+        //UpdateText(slider.value);
     }
 
    void UpdateText(float val)
     {
-        textComp.text = slider.value.ToString();
+        //textComp.text = slider.value.ToString();
 
    }
 }

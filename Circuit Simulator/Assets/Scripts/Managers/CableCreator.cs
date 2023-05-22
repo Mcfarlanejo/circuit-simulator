@@ -65,8 +65,9 @@ public class CableCreator : MonoBehaviour
                     {
                         SetEndAnchor(raycastHit);
                     }
-                    else if (raycastHit.transform.GetComponentInParent<Component>().gameObject !=
-                            startAnchor.GetComponentInParent<Component>().gameObject)
+                    else if ((raycastHit.transform.GetComponentInParent<Component>().gameObject !=
+                            startAnchor.GetComponentInParent<Component>().gameObject) && ((raycastHit.collider.name
+                            != "+AnchorPoint") || (raycastHit.collider.name != "-AnchorPoint")))
                     {
                         SetEndAnchor(raycastHit);
                     }
