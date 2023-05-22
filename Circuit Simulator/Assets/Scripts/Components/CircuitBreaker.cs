@@ -22,8 +22,10 @@ public class CircuitBreaker : Component
         powerSource = true;
     }
     // Start is called before the first frame update
-    void Start()
+    new private void Start()
     {
+        base.Start();
+        componentName = "Circuit Breaker";
         lockoutButton.onClick.AddListener(ToggleLockOutTag);
         AssignValues();
         CheckStartPosition();

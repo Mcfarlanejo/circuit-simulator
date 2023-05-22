@@ -6,9 +6,30 @@ public class VoltMeter : MonoBehaviour
 {
     public GameObject settingSwitch; // the object to be rotated
 
-    private void OnMouseDown()
+    private bool isMouseOver = false;
+
+    private void Update()
     {
-        settingSwitch.transform.Rotate(Vector3.up, 15f); // rotate 15 degree around the y-axis
-        
-    }    
+        if (isMouseOver)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                settingSwitch.transform.Rotate(Vector3.up, 15f); // rotate 15 degrees around the y-axis
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                settingSwitch.transform.Rotate(Vector3.up, -15f); // rotate -15 degrees around the y-axis (opposite direction)
+            }
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        isMouseOver = true;
+    }
+
+    private void OnMouseExit()
+    {
+        isMouseOver = false;
+    }
 }

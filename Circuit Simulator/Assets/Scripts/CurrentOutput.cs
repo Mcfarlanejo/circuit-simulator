@@ -6,21 +6,22 @@ using UnityEngine.UI;
 public class CurrentOutput : MonoBehaviour
 {
     public AnchorPoint positive;
-    public AnchorPoint negative;     
+    public AnchorPoint negative;
 
     public Text text;
 
     public GameObject settings;
 
-    private const float SWITCH_ANGLE_THRESHOLD = 90f;
+    private const float SWITCH_ANGLE_THRESHOLD = 180f;
 
     // Show voltage or current output of connected object
     void Update()
     {
         if (negative.attachedCables != null && settings != null)
         {
-            float switchAngle = settings.transform.rotation.eulerAngles.y;
-            if (switchAngle > 0f && switchAngle <= SWITCH_ANGLE_THRESHOLD)
+            float switchAngle = settings.transform.localRotation.eulerAngles.y;
+
+            if (switchAngle > 0f && switchAngle < SWITCH_ANGLE_THRESHOLD)
             {
                 ShowVolts();
             }
@@ -33,7 +34,7 @@ public class CurrentOutput : MonoBehaviour
 
     public void ShowAmps()
     {
-        if (positive != null)
+        if (positive.attachedCables.Count > 0)
         {
             foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
             {
@@ -47,7 +48,8 @@ public class CurrentOutput : MonoBehaviour
 
     public void ShowVolts()
     {
-        if (positive != null)
+        if (positive.attachedCables.Count > 0)
+
         {
             foreach (AnchorPoint anchorPoint in positive.attachedCables[0].anchorPoints)
             {
@@ -59,4 +61,3 @@ public class CurrentOutput : MonoBehaviour
         }
     }
 }
-
