@@ -10,11 +10,37 @@ public class CameraManager : MonoBehaviour
     private Vector3 frontPosition;
     private Vector3 backPosition;
 
+    public float Sensitivity
+    {
+        get { return sensitivity; }
+        set { sensitivity = value; }
+    }
+    [Range(0.1f, 9f)][SerializeField] float sensitivity = 2f;
+    [Tooltip("Limits horizontal camera rotation. Prevents the camera from turning too far.")]
+    [Range(0f, 90f)][SerializeField] float xRotationLimit = 88f;
+    [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
+    [Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
+
+    Vector2 rotation = Vector2.zero;
+    const string xAxis = "Mouse X"; //Strings in direct code generate garbage, storing and re-using them creates no garbage
+    const string yAxis = "Mouse Y";
+
+
+    public int boundary = 50;
+    public int speed = 5;
+
+    private int screenWidth;
+    private int screenHeight;
+
     // Start is called before the first frame update
     void Start()
     {
         frontPosition = cam.transform.position;
         backPosition = new Vector3(frontPosition.x, frontPosition.y, -frontPosition.z + 1);
+        cam.transform.rotation = Quaternion.identity;
+
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
     }
 
     // Update is called once per frame
@@ -36,7 +62,18 @@ public class CameraManager : MonoBehaviour
                 cam.transform.rotation = Quaternion.Euler(0, 0, 0);
                 front = true;
             }
+        }
 
+        if ((front) && ((Input.GetAxis(xAxis) > screenWidth - boundary) || (Input.GetAxis(xAxis) < 0 + boundary) || (Input.GetAxis(yAxis) > screenHeight - boundary) || (Input.GetAxis(yAxis) < 0 + boundary)))
+        {
+            rotation.x += Input.GetAxis(xAxis) * sensitivity;
+            rotation.x = Mathf.Clamp(rotation.x, -xRotationLimit, xRotationLimit);
+            rotation.y += Input.GetAxis(yAxis) * sensitivity;
+            rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
+            var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
+            var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
+
+            cam.transform.localRotation = xQuat * yQuat; //Quaternions seem to rotate more consistently than EulerAngles. Sensitivity seemed to change slightly at certain degrees using Euler. transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
         }
     }
 }
