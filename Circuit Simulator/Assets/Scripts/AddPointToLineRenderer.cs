@@ -42,5 +42,7 @@ public class AddPointToLineRenderer : MonoBehaviour
         }
 
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, endPoint);
+
+        gameObject.GetComponent<Cable>().DrawMesh();
     }
 }

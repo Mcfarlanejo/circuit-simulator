@@ -22,9 +22,9 @@ public class CameraManager : MonoBehaviour
     }
     [Range(0.1f, 9f)][SerializeField] float sensitivity = 2f;
     [Tooltip("Limits horizontal camera rotation. Prevents the camera from turning too far.")]
-    [Range(0f, 90f)][SerializeField] float xRotationLimit = 88f;
+    [Range(0f, 90f)][SerializeField] float xRotationLimit = 15f;
     [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
-    [Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
+    [Range(0f, 90f)][SerializeField] float yRotationLimit = 15f;
 
     Vector2 rotation = Vector2.zero;
     const string xAxis = "Mouse X"; //Strings in direct code generate garbage, storing and re-using them creates no garbage
@@ -68,7 +68,6 @@ public class CameraManager : MonoBehaviour
             curLerpTime = 0f; //Reset Lerp timer.
             if (front)
             {
-
                 lerpPos = backPosition;
                 lerpRot = Quaternion.Euler(0, 180, 0);
                 overlay.gameObject.SetActive(true);
@@ -83,7 +82,7 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        if ((front) && ((Input.GetAxis(xAxis) > screenWidth - boundary) || (Input.GetAxis(xAxis) < 0 + boundary) || (Input.GetAxis(yAxis) > screenHeight - boundary) || (Input.GetAxis(yAxis) < 0 + boundary)))
+        if (front)
         {
             rotation.x += Input.GetAxis(xAxis) * sensitivity;
             rotation.x = Mathf.Clamp(rotation.x, -xRotationLimit, xRotationLimit);

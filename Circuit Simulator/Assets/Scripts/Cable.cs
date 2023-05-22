@@ -27,8 +27,6 @@ public class Cable : MonoBehaviour
             anchorPoint.attachedCables.Add(gameObject.GetComponent<Cable>());
         }
         mesh = new Mesh();
-        lineRenderer.BakeMesh(mesh, true);
-        collider.sharedMesh = mesh;
     }
 
     private void Update()
@@ -64,5 +62,11 @@ public class Cable : MonoBehaviour
                 }
             }            
         }
+    }
+
+    public void DrawMesh()
+    {
+        lineRenderer.BakeMesh(mesh, true);
+        collider.sharedMesh = mesh;
     }
 }
