@@ -38,6 +38,11 @@ public class AnchorPoint : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
+        if ((attachedCables.Count) == 0 && (!powerSource))
+        {
+            volts = 0;
+            amps = 0;
+        }
         if (attachedComponent != null)
         {
             if (powerSource)
@@ -56,15 +61,6 @@ public class AnchorPoint : MonoBehaviour
                 attachedComponent.GetComponent<Component>().amps = 0;
             }
         }
-
-        // if (parentComponentSelected)
-        // {
-        //     Highlight();
-        // }
-        // else
-        // {
-        //     //SetDefaultColour();
-        // }
     }
 
     void OnMouseEnter() //Change colour to red on mouse over, unless we are Green (Green indicates the anchor node is highlighted for cable drawing)
