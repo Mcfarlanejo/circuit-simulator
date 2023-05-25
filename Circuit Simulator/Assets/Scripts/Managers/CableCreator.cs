@@ -156,6 +156,7 @@ public class CableCreator : MonoBehaviour
             anchorPoint.attachedCables.Remove(cable.GetComponent<Cable>());
             Debug.Log(anchorPoint.attachedCables);
         }
+        cable.GetComponent<Cable>().Cascade();
         Destroy(cable);
     }
 }
