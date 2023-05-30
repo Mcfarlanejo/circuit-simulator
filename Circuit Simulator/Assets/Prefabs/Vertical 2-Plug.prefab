@@ -376,6 +376,8 @@ GameObject:
   - component: {fileID: 3126166159169069333}
   - component: {fileID: 5908577541457391248}
   - component: {fileID: 1276863146630218370}
+  - component: {fileID: 2158186956199323705}
+  - component: {fileID: 2353571304863448454}
   m_Layer: 0
   m_Name: AS_NZS_3112_Female_Wall_Socket_1
   m_TagString: Untagged
@@ -448,6 +450,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2158186956199323705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435885768028368646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6c5b0f385ecd44d89e81921527da46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMaterial: {fileID: 2100000, guid: 83bafbf61d91ff047b608be9b3e27299, type: 2}
+  defaultMaterial: {fileID: 0}
+--- !u!65 &2353571304863448454
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435885768028368646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.6488, y: 3.7827997, z: 0.65350026}
+  m_Center: {x: -0.00059992075, y: 2.6558003, z: 0.06475005}
 --- !u!1 &6783994609915625708
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +488,8 @@ GameObject:
   - component: {fileID: 4621795409418259868}
   - component: {fileID: 3868147463174542247}
   - component: {fileID: 5162113876809426560}
+  - component: {fileID: 4094597991576404334}
+  - component: {fileID: 7339264392281860857}
   m_Layer: 0
   m_Name: AS_NZS_3112_Female_Wall_Socket_2
   m_TagString: Untagged
@@ -531,6 +562,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4094597991576404334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783994609915625708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6c5b0f385ecd44d89e81921527da46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMaterial: {fileID: 2100000, guid: 83bafbf61d91ff047b608be9b3e27299, type: 2}
+  defaultMaterial: {fileID: 0}
+--- !u!65 &7339264392281860857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783994609915625708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.6488, y: 3.7885003, z: 0.6644945}
+  m_Center: {x: -0.00059992075, y: -2.6500502, z: 0.07024726}
 --- !u!1 &6819063052133534206
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6190757455502857028}
   - component: {fileID: 2860499184441260341}
+  - component: {fileID: 3310284825791114197}
   m_Layer: 0
   m_Name: Vertical 2-Plug
   m_TagString: Untagged
@@ -582,6 +641,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7613b7680712c144486878ee843b8961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fault: 0
+  inputVolts: 0
+  volts: 0
+  amps: 0
+  outputVolts: 0
+  expectedVoltage: 230
+  expectedAmps: 10
+  defaultColour: {r: 0, g: 0, b: 1, a: 1}
+  faultColour: {r: 1, g: 0, b: 0, a: 1}
+  powerSource: 0
+  popUp: {fileID: 0}
+  anchorPoints:
+  - {fileID: 3286518362211038879}
+  - {fileID: 3286518363021982123}
+  componentName: Wall Socket
+  tooltip: {fileID: 0}
+  plugs:
+  - {fileID: 2158186956199323705}
+  - {fileID: 4094597991576404334}
+--- !u!65 &3310284825791114197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819063052133534206}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.818827, y: 14.973377, z: 0.7125102}
+  m_Center: {x: 0.07105589, y: -0.012897253, z: -0.14374503}
 --- !u!1001 &5936663939028018168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -660,6 +751,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9223173505007342950, guid: 76a44f2c1cec9254eb131e0e50914444, type: 3}
   m_PrefabInstance: {fileID: 5936663939028018168}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3286518362211038879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9223173505007342951, guid: 76a44f2c1cec9254eb131e0e50914444, type: 3}
+  m_PrefabInstance: {fileID: 5936663939028018168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32816a88d421504eb8f5d25eeb21852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5936663940367445196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,3 +840,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9223173505007342950, guid: 76a44f2c1cec9254eb131e0e50914444, type: 3}
   m_PrefabInstance: {fileID: 5936663940367445196}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3286518363021982123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9223173505007342951, guid: 76a44f2c1cec9254eb131e0e50914444, type: 3}
+  m_PrefabInstance: {fileID: 5936663940367445196}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32816a88d421504eb8f5d25eeb21852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
