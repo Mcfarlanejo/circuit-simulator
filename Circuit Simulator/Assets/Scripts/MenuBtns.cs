@@ -9,4 +9,9 @@ public class MenuBtns : MonoBehaviour
     {
         SceneManager.LoadScene("House");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
