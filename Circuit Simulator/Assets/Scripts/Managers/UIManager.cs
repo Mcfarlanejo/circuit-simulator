@@ -32,11 +32,6 @@ public class UIManager : MonoBehaviour
         float perc = curLerpTime / lerpTime;
 
         flip.transform.rotation = Quaternion.Lerp(flip.transform.rotation, lerpRot, perc);
-
-        if (Input.GetKeyDown("tab"))
-        {
-            Flip();
-        }
     }
 
     public void Flip()

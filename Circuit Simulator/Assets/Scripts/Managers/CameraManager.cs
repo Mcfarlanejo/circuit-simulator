@@ -15,6 +15,8 @@ public class CameraManager : MonoBehaviour
     private float curLerpTime; //This and next are for smoothing time values.
     private float lerpTime = 1f;
 
+    [SerializeField] UIManager ui; //Reference for UI
+
     public float Sensitivity
     {
         get { return sensitivity; }
@@ -81,8 +83,9 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
+        ui.Flip();
         curLerpTime = 0f; //Reset Lerp timer.
         if (front)
         {
