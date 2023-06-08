@@ -1966,6 +1966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnchorPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 9223173505007342949, guid: 76a44f2c1cec9254eb131e0e50914444, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9223173505007342950, guid: 76a44f2c1cec9254eb131e0e50914444, type: 3}
       propertyPath: m_RootOrder
       value: 0
