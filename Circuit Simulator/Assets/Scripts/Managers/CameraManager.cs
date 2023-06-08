@@ -65,21 +65,7 @@ public class CameraManager : MonoBehaviour
         
         if (Input.GetKeyDown("tab")) //Switch target positions.
         {
-            curLerpTime = 0f; //Reset Lerp timer.
-            if (front)
-            {
-                lerpPos = backPosition;
-                lerpRot = Quaternion.Euler(0, 180, 0);
-                overlay.gameObject.SetActive(true);
-                front = false;
-            }
-            else
-            {
-                lerpPos = frontPosition;
-                lerpRot = Quaternion.Euler(0, 0, 0);
-                overlay.gameObject.SetActive(false);
-                front = true;
-            }
+            Flip();
         }
 
         if (front)
@@ -92,6 +78,25 @@ public class CameraManager : MonoBehaviour
             var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
 
             cam.transform.localRotation = xQuat * yQuat; //Quaternions seem to rotate more consistently than EulerAngles. Sensitivity seemed to change slightly at certain degrees using Euler. transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
+        }
+    }
+
+    private void Flip()
+    {
+        curLerpTime = 0f; //Reset Lerp timer.
+        if (front)
+        {
+            lerpPos = backPosition;
+            lerpRot = Quaternion.Euler(0, 180, 0);
+            overlay.gameObject.SetActive(true);
+            front = false;
+        }
+        else
+        {
+            lerpPos = frontPosition;
+            lerpRot = Quaternion.Euler(0, 0, 0);
+            overlay.gameObject.SetActive(false);
+            front = true;
         }
     }
 }
