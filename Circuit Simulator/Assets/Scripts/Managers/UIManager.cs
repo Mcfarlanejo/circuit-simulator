@@ -35,18 +35,23 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown("tab"))
         {
-            if (!front)
-            {
-                tab.GetComponent<Image>().sprite = pressed;
-                lerpRot = Quaternion.Euler(0, 0, 180);
-            }
-            else
-            {
-                tab.GetComponent<Image>().sprite = unpressed;
-                lerpRot = Quaternion.Euler(0, 0, 0);
-            }
-            front = !front;
-            curLerpTime = 0f;
+            Flip();
         }
+    }
+
+    public void Flip()
+    {
+        if (!front)
+        {
+            tab.GetComponent<Image>().sprite = pressed;
+            lerpRot = Quaternion.Euler(0, 0, 180);
+        }
+        else
+        {
+            tab.GetComponent<Image>().sprite = unpressed;
+            lerpRot = Quaternion.Euler(0, 0, 0);
+        }
+        front = !front;
+        curLerpTime = 0f;
     }
 }
