@@ -165,8 +165,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.09139473, y: 0.015913874, z: 0.09289664}
-  m_Center: {x: -0.04123981, y: 0.0028141476, z: 0.21360263}
+  m_Size: {x: 0.09139474, y: 0.010897521, z: 0.09289663}
+  m_Center: {x: -0.04123981, y: 0.0003059784, z: 0.21360265}
 --- !u!114 &3732509501926554242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,15 +188,21 @@ MonoBehaviour:
   expectedAmps: 10
   defaultColour: {r: 0, g: 0, b: 1, a: 1}
   faultColour: {r: 1, g: 0, b: 0, a: 1}
+  powerSource: 0
   popUp: {fileID: 0}
   anchorPoints:
   - {fileID: 3732509501358227436}
   - {fileID: 5490946715716045001}
+  componentName: DEFAULT_COMPONENT
+  tooltip: {fileID: 0}
   onAngle: 170
   offAngle: 180
   switchObject: {fileID: 2753719316889180175}
   switchOn: 0
   connectedLight: {fileID: 0}
+  lightBulb: {fileID: 0}
+  onMaterial: {fileID: 2100000, guid: 751bb585af83199489c91cc6e975e3e5, type: 2}
+  offMaterial: {fileID: 2100000, guid: cb6f1d0cd50b0c04d9e0a8d00d9976d6, type: 2}
 --- !u!1 &4764827786305302386
 GameObject:
   m_ObjectHideFlags: 0
