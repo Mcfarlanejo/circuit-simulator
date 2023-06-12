@@ -9,7 +9,7 @@ public class Tooltip : MonoBehaviour
     public Camera cam;
     private Vector3 min, max;
     private RectTransform rect;
-    private float offset = 3f;
+    private float offset = 1f;
 
     public string name, volts, amps, fault;
     public TMP_Text namebox, vbox, abox, fbox;
@@ -38,7 +38,7 @@ public class Tooltip : MonoBehaviour
         if (gameObject.activeSelf)
         {
             //get the tooltip position with offset
-            Vector3 position = new Vector3(Input.mousePosition.x + rect.rect.width, Input.mousePosition.y - (rect.rect.height / 2 + offset), 0f);
+            Vector3 position = new Vector3(Input.mousePosition.x + (rect.rect.width / 4) + offset, Input.mousePosition.y - (rect.rect.height / 4) - offset, 0f);
             //clamp it to the screen size so it doesn't go outside
             transform.position = new Vector3(Mathf.Clamp(position.x, min.x + rect.rect.width/2, max.x - rect.rect.width/2), Mathf.Clamp(position.y, min.y + rect.rect.height / 2, max.y - rect.rect.height / 2), transform.position.z);
         }
