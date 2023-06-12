@@ -57,7 +57,7 @@ public abstract class Component : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         CheckForFault();
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 public class LightSwitch : Component
@@ -11,11 +12,9 @@ public class LightSwitch : Component
     private Quaternion target;
     public GameObject connectedLight;
     
-    public GameObject lightBulb; 
-    public Material onMaterial;
-    public Material offMaterial;
+    
 
-    private Renderer lightBulbRenderer;
+    
 
     new private void Start()
     {
@@ -27,24 +26,14 @@ public class LightSwitch : Component
 
         componentName = "Light Switch";
         
-        lightBulbRenderer = lightBulb.GetComponent<Renderer>();
         CheckStartPosition();
         
         switchObject.transform.rotation = target;
-        UpdateMaterial();
     }
 
     private void FixedUpdate()
     {
-        if (switchOn && !fault)
-        {
-            connectedLight.SetActive(true);
-        }
-        else
-        {
-            connectedLight.SetActive(false);
-        }
-        UpdateMaterial();
+        CheckForPower();
     }
     public override void Interact()
     {
@@ -74,15 +63,18 @@ public class LightSwitch : Component
         switchOn = !switchOn;
     }
 
-    void UpdateMaterial()   
+    public void CheckForPower()
     {
-        if (switchOn && !fault)
+        if (switchOn && !fault && connectedLight.GetComponentInParent<LightBlub>().screwedIn)
         {
-            lightBulbRenderer.material = onMaterial;
+            connectedLight.SetActive(true);
+            connectedLight.GetComponentInParent<LightBlub>().UpdateMaterial(true);
         }
         else
         {
-            lightBulbRenderer.material = offMaterial;
+            connectedLight.SetActive(false);
+            connectedLight.GetComponentInParent<LightBlub>().UpdateMaterial(false);
         }
     }
+
 }
