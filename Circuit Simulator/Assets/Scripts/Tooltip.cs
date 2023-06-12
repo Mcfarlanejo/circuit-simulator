@@ -13,7 +13,7 @@ public class Tooltip : MonoBehaviour
 
     public string name, volts, amps, fault;
     public TMP_Text namebox, vbox, abox, fbox;
-    private string namePre = "Name: ";
+    private string namePre = "";
     private string voltPre = "Voltage: ";
     private string ampPre = "Amperage: ";
     private string faultPre = "Fault: ";
