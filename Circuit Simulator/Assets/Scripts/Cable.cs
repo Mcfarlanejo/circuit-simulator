@@ -29,39 +29,9 @@ public class Cable : MonoBehaviour
         mesh = new Mesh();
     }
 
-    //private void Update()
-    //{
-    //    if ((anchorPoints[0].gameObject.name != "-AnchorPoint") && (anchorPoints[1].gameObject.name != "-AnchorPoint") &&
-    //        (anchorPoints[0].gameObject.name != "+AnchorPoint") && (anchorPoints[1].gameObject.name != "+AnchorPoint"))
-    //    {
-    //        foreach (AnchorPoint anchorPoint in anchorPoints)
-    //        {
-    //            if (volts > 0 )
-    //            {
-    //                anchorPoint.volts = volts;
-    //                anchorPoint.amps = amps;
-    //            }
-    //        }       
-    //    }
-    //}
-
     public void Cascade()
     {
-        //foreach (AnchorPoint anchorPoint in anchorPoints)
-        //{
-        //    if (!anchorPoint.powerSource)
-        //    {
-        //        foreach (Cable cable in anchorPoint.attachedCables)
-        //        {
-        //            if (!CheckForOtherPowerSource(cable))
-        //            {
-        //                anchorPoint.transferPower = false;
-        //                anchorPoint.volts = 0;
-        //                anchorPoint.amps = 0;
-        //            }
-        //        }
-        //    }
-        //}
+        
     }
 
     private bool CheckForOtherPowerSource(Cable cable)
