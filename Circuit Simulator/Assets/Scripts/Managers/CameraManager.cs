@@ -59,10 +59,15 @@ public class CameraManager : MonoBehaviour
         }
         float perc = curLerpTime / lerpTime; //Calculate value through lerp based on time passed.
 
+        if (!front && perc >= 0.2 && !overlay.gameObject.activeSelf) //Check for ending the lerp on the backside switch.
+        {
+            overlay.gameObject.SetActive(true);
+        }
+
         //Push camera towards target position through a Lerp.
         cam.transform.position = Vector3.Lerp(cam.transform.position, lerpPos, perc);
         cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, lerpRot, perc);
-        
+
         if (Input.GetKeyDown("tab")) //Switch target positions.
         {
             curLerpTime = 0f; //Reset Lerp timer.
@@ -70,7 +75,6 @@ public class CameraManager : MonoBehaviour
             {
                 lerpPos = backPosition;
                 lerpRot = Quaternion.Euler(0, 180, 0);
-                overlay.gameObject.SetActive(true);
                 front = false;
             }
             else
