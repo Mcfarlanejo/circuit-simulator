@@ -32,21 +32,21 @@ public class UIManager : MonoBehaviour
         float perc = curLerpTime / lerpTime;
 
         flip.transform.rotation = Quaternion.Lerp(flip.transform.rotation, lerpRot, perc);
+    }
 
-        if (Input.GetKeyDown("tab"))
+    public void Flip()
+    {
+        if (!front)
         {
-            if (!front)
-            {
-                tab.GetComponent<Image>().sprite = pressed;
-                lerpRot = Quaternion.Euler(0, 0, 180);
-            }
-            else
-            {
-                tab.GetComponent<Image>().sprite = unpressed;
-                lerpRot = Quaternion.Euler(0, 0, 0);
-            }
-            front = !front;
-            curLerpTime = 0f;
+            tab.GetComponent<Image>().sprite = pressed;
+            lerpRot = Quaternion.Euler(0, 0, 180);
         }
+        else
+        {
+            tab.GetComponent<Image>().sprite = unpressed;
+            lerpRot = Quaternion.Euler(0, 0, 0);
+        }
+        front = !front;
+        curLerpTime = 0f;
     }
 }
