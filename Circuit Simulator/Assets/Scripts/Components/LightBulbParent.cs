@@ -8,8 +8,7 @@ public class LightBulbParent : MonoBehaviour
 
     public void TurnLightOn()
     {
-        lightBlub.UpdateMaterial(true);
-        
         lightBlub.screwedIn = true;
+        lightBlub.UpdateMaterial(lightBlub.fault);
     }
 }

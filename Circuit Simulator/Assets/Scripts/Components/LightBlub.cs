@@ -60,12 +60,6 @@ public class LightBlub : Component
         }
     }
 
-    IEnumerator TurnOn()
-    {
-        yield return new WaitForSeconds(1f);
-        
-    }
-
     public override void Interact()
     {
         
