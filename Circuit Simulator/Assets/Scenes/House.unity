@@ -1783,6 +1783,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 921404169837242152, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488647895037992512, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037602328534807770, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068579718264198998, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6127115492106221944, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1874,6 +1890,34 @@ PrefabInstance:
     - target: {fileID: 6127115492106221945, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127115492106221947, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_ScaleFactor
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127115492106221947, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127115492106221947, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127115492106221947, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_FallbackScreenDPI
+      value: 123.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127115492106221947, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127115492106221947, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127115492106221947, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6127115492106221949, guid: 7da90c3ec4f1ecf42863e625a0c50412, type: 3}
       propertyPath: m_Name

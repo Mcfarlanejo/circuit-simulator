@@ -12,12 +12,6 @@ public class WallSocket : Component
 
         componentName = "Wall Socket";
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     public override void Interact()
     {
