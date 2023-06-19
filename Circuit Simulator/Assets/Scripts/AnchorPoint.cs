@@ -38,6 +38,11 @@ public class AnchorPoint : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
+        if ((attachedCables.Count) == 0 && (!powerSource))
+        {
+            volts = 0;
+            amps = 0;
+        }
         if (attachedComponent != null)
         {
             if (powerSource)
@@ -45,26 +50,40 @@ public class AnchorPoint : MonoBehaviour
                 volts = attachedComponent.GetComponent<Component>().volts;
                 amps = attachedComponent.GetComponent<Component>().amps;
             }
-            else if (CheckForPoweredAnchorPoints())
+            if (powerSource && volts > 0)
+            {
+                foreach (Cable cable in attachedCables)
+                {
+                    foreach (AnchorPoint anchorPoint in cable.anchorPoints)
+                    {
+                        if (!anchorPoint.powerSource)
+                        {
+                            anchorPoint.volts = volts;
+                            anchorPoint.amps = amps;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Cable cable in attachedCables)
+                {
+                    foreach (AnchorPoint anchorPoint in cable.anchorPoints)
+                    {
+                        if (!anchorPoint.powerSource && !CheckForPowerSource(anchorPoint.attachedCables))
+                        {
+                            anchorPoint.volts = 0;
+                            anchorPoint.amps = 0;
+                        }
+                    }
+                }
+            }
+            if (!powerSource)
             {
                 attachedComponent.GetComponent<Component>().volts = volts;
                 attachedComponent.GetComponent<Component>().amps = amps;
             }
-            else
-            {
-                attachedComponent.GetComponent<Component>().volts = 0;
-                attachedComponent.GetComponent<Component>().amps = 0;
-            }
         }
-
-        // if (parentComponentSelected)
-        // {
-        //     Highlight();
-        // }
-        // else
-        // {
-        //     //SetDefaultColour();
-        // }
     }
 
     void OnMouseEnter() //Change colour to red on mouse over, unless we are Green (Green indicates the anchor node is highlighted for cable drawing)
@@ -105,15 +124,18 @@ public class AnchorPoint : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().material.color = defaultColour;
     }
 
-    private bool CheckForPoweredAnchorPoints()
+    private bool CheckForPowerSource(List<Cable> cables)
     {
-        foreach (AnchorPoint anchorPoint in attachedComponent.GetComponent<Component>().anchorPoints)
+        foreach (Cable cable in cables)
         {
-            if (anchorPoint.volts <= 0)
+            foreach (AnchorPoint anchorPoint in cable.anchorPoints)
             {
-                return false;
+                if (anchorPoint.powerSource && anchorPoint.volts > 0)
+                {
+                    return true;
+                }
             }
         }
-        return true;
+        return false;
     }
 }

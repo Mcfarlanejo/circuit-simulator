@@ -1,4 +1,4 @@
-using Palmmedia.ReportGenerator.Core.Reporting.Builders;
+//using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -156,6 +156,7 @@ public class CableCreator : MonoBehaviour
             anchorPoint.attachedCables.Remove(cable.GetComponent<Cable>());
             Debug.Log(anchorPoint.attachedCables);
         }
+        cable.GetComponent<Cable>().Cascade();
         Destroy(cable);
     }
 }
