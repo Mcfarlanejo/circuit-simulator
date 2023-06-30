@@ -10,3 +10,5 @@ Our changes which were requested by the client involved changing the simulation 
   ![image](https://github.com/Mcfarlanejo/circuit-simulator/assets/64822697/2aac9703-3126-4590-9a86-3d6eee128d54)
   
 This is what our circuit simulator application now looks like. The fundamentals of connecting wires, operating a multimeter device, switch functionality and environment have all been implemented to create the start of a realistic setting where people can learn to connect electrical circuits before handling them in real-world situations. 
+
+We hope in the future to implement scenarios consisting of specific combinaitons of components to test the user on their knowledge, as well as a feature where the user could create their own scenarios.
